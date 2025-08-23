@@ -1,48 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-import Demo from './components/Demo';
-import Catalog from './components/Catalog';
+import { Link, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Category from "./pages/Category";
+import Cart from "./pages/Cart";
+import NavbarComponent from "./components/Navbar";
+
 function App() {
-  const sv1 = {
-    name: "Nguyen Van A",
-    tel: "12345651515789",
-    email: "abc@gmail.com",
-    address: "123 Street, City"
-  }
-  const sv2 = {
-    name: "Nguyen Van B",
-    tel: "987654321",
-    email: "asdw@gmail.com",
-    address: "456 Avenue, City"
-  }
-  const cats = [
-    { name: "Fashion", count: 10 },
-    { name: "Watch", count: 20 },
-    { name: "Food", count: 30 }
-  ];
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        
+      <NavbarComponent />
 
-        {
-          cats.map((cat, index) => (
-            <Catalog key={index} data={cat} />
-          ))
-        }
-      </header>
+      <main>
+        <div className="container">
+          <Routes>
+            <Route path="/" Component={Home} />
+            <Route path="/Category" element={<Category />} />
+            <Route path="/Cart" element={<Cart />} />
+          </Routes>
+        </div>
+      </main>
     </div>
   );
 }
